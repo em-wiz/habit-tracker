@@ -8,17 +8,47 @@
 </head>
 <body>
     <div class="app-container">
+
         <h1>Habit Tracker</h1>
+
         <form>
             <input type="text" placeholder="Add a new habit">
             <input type="number" name="" id="" placeholder="Set a weekly goal (e.g., 5 days)">
             <button type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                  </svg>
+                </svg> <!-- heroicon svg plus icon -->
+
                 Add Habit
+
             </button>
         </form>
+
+        <div class="habit-container">
+
+            <div class="habit">
+                <div class="habit-name">Some habit</div>
+                <div class="habit-status">Goal Achieved!</div>
+            </div>
+
+            <div class="progress">
+                <div class="progress-text">Progress: 6/5</div>
+                <div class="streak-text">Streak: 6 days</div>
+            </div>
+
+            <div class="weekdays">
+                <button class="weekday">S</button>
+                <button class="weekday">M</button>
+                <button class="weekday">T</button>
+                <button class="weekday">W</button>
+                <button class="weekday">T</button>
+                <button class="weekday">F</button>
+                <button class="weekday">S</button>
+            </div>
+
+        </div>
+
+
     </div>
     
       
