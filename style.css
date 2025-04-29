@@ -10,7 +10,7 @@ html, body{
 }
 
 body{
-    padding: 50px;
+    padding:50px;
 }
 
 .app-container{
@@ -19,10 +19,19 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 15px;
     width: 50%;
     margin: 0 auto;
     padding: 40px;
     border-radius: 10px;
+}
+
+.add-habits{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
 }
 
 h1{
@@ -33,10 +42,9 @@ h1{
 form{
     background: #ffffff;
     width: 100%;
-    min-height: 150px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 10px;
     padding: 20px;
     border: 1px solid #ececec ;
     border-radius: 10px;
@@ -68,16 +76,53 @@ button{
     
 }
 
+.habits{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
 .habit-container{
     background: #ffffff;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-top: 10px;
+    gap: 10px;
     padding: 20px;
     border: 1px solid #ececec ;
     border-radius: 10px;
+    animation: fadeInUp 0.5s ease-out;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.habit-container.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.delete-habit{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.delete-habit > button{
+    width: 120px;
+    color: #ffffff;
+    background: #cf2525;
 }
 
 .habit, .progress {
@@ -102,7 +147,7 @@ button{
 
 .weekdays button{
     background-color: #cccccc;
-    color: #000000;
+    color: #686868;
 }
 
 .weekdays button:hover{
@@ -121,7 +166,7 @@ button{
 }
 
 .habit-status{
-    color: #777777;
+    color: #535353;
     font-size: 14px;
     font-weight: 600;
 }
