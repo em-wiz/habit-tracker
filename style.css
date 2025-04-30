@@ -159,6 +159,11 @@ button{
     flex: 1;
 }
 
+.weekday.active {
+    background-color: #4caf50; /* Green, or any color you want */
+    color: white;
+  }
+
 .habit-name{
     color: #008ae6;
     font-size: 1em;

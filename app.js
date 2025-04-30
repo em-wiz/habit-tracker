@@ -15,7 +15,7 @@ const habitsCardContainer = document.getElementById("habitsCardContainer");
 
 
 addHabitBtn.addEventListener("click", () => {
-
+    
     const habit = habitInput.value.trim();
     const goal = weeklyGoal.value;
     if ((!habit) || (!goal)) return;
@@ -24,19 +24,21 @@ addHabitBtn.addEventListener("click", () => {
         return;
     }
    
-
     const newHabitCard = document.createElement('div');
     newHabitCard.classList.add('habit-container')
+    let progressCount = 0;
+    let streak = 0;
+    let HabitStatusCount = goal;
     newHabitCard.innerHTML = `
         
     <div class="habit">
         <div class="habit-name">${habit}</div>
-        <div class="habit-status">Goal Achieved!</div>
+        <div class="habit-status">${HabitStatusCount} Days to go!</div>
     </div>
 
     <div class="progress">
-        <div class="progress-text">Progress: 6/${goal}</div>
-        <div class="streak-text">Streak: 6 days</div>
+        <div class="progress-text">Progress: ${progressCount}/${goal}</div>
+        <div class="streak-text">Streak: ${streak} days</div>
     </div>
 
     <div class="weekdays">
@@ -58,6 +60,42 @@ addHabitBtn.addEventListener("click", () => {
         </button>
     </div>
     `;
+
+    const weekDaysBtn = newHabitCard.querySelectorAll(".weekday");
+
+    const progressText = newHabitCard.querySelector(".progress-text");
+    const streakText = newHabitCard.querySelector(".streak-text");
+    const HabitStatusText = newHabitCard.querySelector(".habit-status");
+
+    weekDaysBtn.forEach(button => {
+        button.addEventListener("click", () => {
+            const isActive = button.classList.contains("active");
+    
+            if (!isActive && HabitStatusCount > 0) {
+                button.classList.add("active");
+                progressCount += 1;
+                streak += 1;
+                HabitStatusCount -= 1;
+            } else if (isActive) {
+                button.classList.remove("active");
+                progressCount -= 1;
+                streak -= 1;
+                HabitStatusCount += 1;
+            }
+    
+            progressText.textContent = `Progress: ${progressCount}/${goal}`;
+            streakText.textContent = `Streak: ${streak} days`;
+    
+            if (HabitStatusCount === 0) {
+                HabitStatusText.textContent = "Goal Achieved!";
+            } else {
+                HabitStatusText.textContent = `${HabitStatusCount} Days to go!`;
+            }
+        });
+    });
+    
+
+
 
     const deleteBtn = newHabitCard.querySelector(".deleteBtn");
     deleteBtn.addEventListener("click", ()=>{
